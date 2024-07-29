@@ -1,0 +1,15 @@
+{{!< main}}
+<h1>Carrito de Compras</h1>
+<div class="container">
+  {{#each cart.products}}
+    <div class="card">
+      <h2>{{this.product.title}}</h2>
+      <p>{{this.product.description}}</p>
+      <p><strong>Price:</strong> ${{this.product.price}}</p>
+      <p><strong>Quantity:</strong> {{this.quantity}}</p>
+      <form action="/carts/{{../cart._id}}/products/{{this.product._id}}?_method=DELETE" method="post">
+        <button type="submit">Eliminar del carrito</button>
+      </form>
+    </div>
+  {{/each}}
+</div>
