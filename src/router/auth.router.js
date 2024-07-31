@@ -9,11 +9,11 @@ const router = Router();
 // Registro de usuarios
 router.post('/register', async (req, res) => {
     try {
-        const { first_name, last_name, email, age, password, cart, role } =
+        const { firstName, lastName, email, age, password, cart, role } =
             req.body;
         const user = new userModel({
-            first_name,
-            last_name,
+            firstName,
+            lastName,
             email,
             age,
             password,

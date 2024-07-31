@@ -1,0 +1,19 @@
+{{!< main}}
+<h1>Ingresa</h1>
+
+<div class="auth-form-container">
+    <form id="loginForm" class="auth-form">
+        <label>Email</label>
+        <input name="email" type="email" placeholder="Ingrese su correo electrónico" required>
+        <br/>
+        <label>Contraseña</label>
+        <input name="password" type="password" placeholder="Ingrese su contraseña" required>
+        <br/>
+        <div class="button-container">
+            <button type="submit">Ingresar</button>
+            <button type="button" class="register-button" onclick="window.location.href='/register'">Regístrate</button>
+        </div>
+    </form>
+</div>
+
+<script src="/js/login.js"></script>

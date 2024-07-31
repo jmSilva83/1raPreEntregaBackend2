@@ -25,10 +25,7 @@ router.get('/:cid', async (req, res) => {
     const { cid } = req.params;
     const cart = await cartManager.getCartById(cid);
     if (!cart) {
-      return res.status(404).send({
-        status: 'error',
-        message: 'Cart not found',
-      });
+      return res.status(404).render('404');
     }
 
     res.status(200).send({

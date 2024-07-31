@@ -1,31 +1,16 @@
 {{!< main}}
-<h1>Lista de Productos</h1>
-<div class="container">
-    {{#each products}}
-    <div class="card">
-        <h2>{{this.title}}</h2>
-        <p>{{this.description}}</p>
-        <p><strong>Price:</strong> ${{this.price}}</p>
-        <p><strong>Stock:</strong> {{this.stock}}</p>
-        <p><strong>Code:</strong> {{this.code}}</p>
-        <a href="/products/{{this._id}}">Ver detalles</a>
-        <form action="/carts/:cid/products/{{this._id}}" method="post">
-        <button type="submit">Agregar al carrito</button>
-        </form>
-    </div>
-    {{/each}}
-</div>
+<body>
+    <header>
+        <h1>Bienvenido a nuestra tienda</h1>
+        <p>Explora nuestros productos y aprovecha nuestras ofertas exclusivas.</p>
+    </header>
 
+    <main>
+        <section class="cta-buttons">
+            <a href="/login" class="cta-button">Iniciar sesión</a>
+            <a href="/register" class="cta-button">Registrarse</a>
+        </section>
+    </main>
 
-<!-- Agregar la paginación con estilos -->
-<div class="pagination">
-    {{#if hasPrevPage}}
-    <a href="?page={{prevPage}}" class="pagination-link">Anterior</a>
-    {{/if}}
-
-    <span class="pagination-current">Página {{currentPage}} de {{totalPages}}</span>
-
-    {{#if hasNextPage}}
-    <a href="?page={{nextPage}}" class="pagination-link">Siguiente</a>
-    {{/if}}
-</div>
+    <script src="/js/home.js"></script>
+</body>

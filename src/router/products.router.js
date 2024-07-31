@@ -37,10 +37,7 @@ router.get('/:pid', async (req, res) => {
     const product = await productManager.getProductById(pid);
     
     if (!product) {
-      return res.status(404).send({
-        status: 'error',
-        message: 'Product not found',
-      });
+      return res.status(404).render('404');
     }
     res.status(200).send({
       status: 'success',
@@ -97,10 +94,7 @@ router.put('/:pid', async (req, res) => {
     const updatedProduct = await productManager.updateProduct(pid, req.body);
 
     if (!updatedProduct) {
-      return res.status(404).json({
-        status: 'error',
-        message: 'Product not found',
-      });
+      return res.status(404).render('404');
     }
 
     res.status(200).json({

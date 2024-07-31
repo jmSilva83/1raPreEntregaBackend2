@@ -15,12 +15,8 @@ const schema = new mongoose.Schema({
         required: true,
       },
     },
-  ],
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  ]
+},{timestamps:true});
 
 schema.pre(['find', 'findOne', 'findById'], function () {
   this.populate('products.product');

@@ -1,0 +1,28 @@
+{{!< main}}
+<h1>Regístrate</h1>
+
+<div class="auth-form-container">
+    <form id="registerForm" class="auth-form">
+        <label>Nombre</label>
+        <input name="firstName" type="text" placeholder="Ingrese su nombre" required>
+        <br/>
+        <label>Apellido</label>
+        <input name="lastName" type="text" placeholder="Ingrese su apellido" required>
+        <br/>
+        <label>Email</label>
+        <input name="email" type="email" placeholder="Ingrese su correo electrónico" required>
+        <br/>
+        <label>Fecha de nacimiento</label>
+        <input type="date" name="birthDate" required>
+        <br/>
+        <label>Contraseña</label>
+        <input name="password" type="password" placeholder="Ingrese su contraseña" required>
+        <br/>
+        <div class="button-container">
+            <button type="submit">Registrarse</button>
+            <button type="button" class="login-button" onclick="window.location.href='/login'">Ingresa</button>
+        </div>
+    </form>
+</div>
+
+<script src="/js/register.js"></script>

@@ -25,7 +25,7 @@ router.get('/products', async (req, res) => {
     const nextPage = hasNextPage ? page + 1 : null;
     const prevPage = hasPrevPage ? page - 1 : null;
 
-    res.render('Home', {
+    res.render('Products', {
       products,
       currentPage: page,
       hasNextPage,
@@ -38,7 +38,6 @@ router.get('/products', async (req, res) => {
     res.status(500).send('Error fetching products');
   }
 });
-
 
 router.get('/products/:pid', async (req, res) => {
   const { pid } = req.params;
@@ -56,7 +55,17 @@ router.get('/products/:pid', async (req, res) => {
     });
   } catch (error) {
     console.error('Error fetching product details:', error.message);
-    res.render('error', { message: 'Error fetching product details' }); 
+    res.render('404'); 
+  }
+});
+
+router.get('/realtimeproducts', async (req, res) => {
+  try {
+    const products = await productModel.find().lean(); // Obtener todos los productos y convertirlos a objetos simples
+    res.render('RealTimeProducts', { title: 'Productos en Tiempo Real', products });
+  } catch (error) {
+    console.error('Error al obtener los productos:', error.message);
+    res.status(500).send('Error interno del servidor');
   }
 });
 
@@ -77,7 +86,29 @@ router.get('/carts/:cid', async (req, res) => {
     res.render('Cart', { cart });
   } catch (error) {
     console.error('Error fetching cart details:', error.message);
-    res.render('error', { message: 'Error fetching cart details' });
+    res.render('404');
   }
 });
+
+router.get('/',(req,res)=>{
+  res.render('Home');
+})
+
+router.get('/register',(req,res)=>{
+  res.render('Register');
+})
+
+router.get('/login',(req,res)=>{
+  res.render('Login');
+})
+
+router.get('/profile',(req,res)=>{
+  if(!req.user){
+      return res.redirect('/login')
+  }
+  res.render('Profile',{
+      user:req.user
+  })
+})
+
 export default router;

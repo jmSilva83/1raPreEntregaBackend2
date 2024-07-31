@@ -4,8 +4,8 @@ import bcrypt from 'bcrypt';
 const collection = 'Users';
 
 const schema = new mongoose.Schema({
-    first_name: { type: String, required: true },
-    last_name: { type: String, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
     email: { type: String, unique: true, required: true },
     age: { type: Number, required: true },
     password: { type: String, required: true },
@@ -18,8 +18,8 @@ schema.pre('save', async function (next) {
         this.password = bcrypt.hashSync(this.password, 10);
     }
     next();
-});
+},{timestamps:true});
 
-const userModel = mongoose.model(collection, schema);
+const usersModel = mongoose.model(collection, schema);
 
-export default userModel;
+export default usersModel;
