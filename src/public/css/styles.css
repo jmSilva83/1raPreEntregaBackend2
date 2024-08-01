@@ -364,3 +364,38 @@ main {
 .error-container a:hover {
     background-color: #7e44bd;
 }
+
+/* Estilos para la vista del perfil del usuario */
+.profile-card {
+    background-color: #1f1f1f;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+    max-width: 400px;
+    text-align: center;
+}
+
+.profile-card p {
+    margin: 10px 0;
+}
+
+.profile-card p strong {
+    color: #9b5de5; /* Color para los labels */
+}
+
+#logoutButton {
+    padding: 10px 20px;
+    background-color: #9b5de5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+#logoutButton:hover {
+    background-color: #7e44bd;
+}

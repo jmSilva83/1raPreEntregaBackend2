@@ -14,7 +14,6 @@ export default class UsersManager {
     createUser(user){
         return usersModel.create(user);
     }
-
     updateUser(userId,user) {
         return usersModel.updateOne({_id:userId},{$set:user})
     }
