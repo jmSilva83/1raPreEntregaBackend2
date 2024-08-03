@@ -15,6 +15,7 @@ class ViewsRouter extends BaseRouter {
         });
 
         this.get('/profile', ['USER'], (req, res) => {
+            console.log(req.user);
             if (!req.user) {
                 return res.redirect('/login');
             }

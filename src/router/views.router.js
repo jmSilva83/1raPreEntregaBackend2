@@ -1,8 +1,32 @@
 import { Router } from 'express';
+import passport from 'passport';
 import productModel from '../managers/mongo/models/product.model.js';
 import cartModel from '../managers/mongo/models/cart.model.js';
 
 const router = Router();
+
+router.get('/',(req,res)=>{
+  res.render('Home');
+})
+
+router.get('/register',(req,res)=>{
+  res.render('Register');
+})
+
+router.get('/login',(req,res)=>{
+  res.render('Login');
+})
+
+router.get('/profile',passport.authenticate('current',{session:false}),(req,res)=>{
+  console.log(req.user);
+
+  if(!req.user){
+      return res.redirect('/login')
+  }
+  res.render('Profile',{
+      user: req.user
+  })
+})
 
 router.get('/products', async (req, res) => {
   try {
@@ -69,7 +93,6 @@ router.get('/realtimeproducts', async (req, res) => {
   }
 });
 
-// Vista para un carrito específico
 router.get('/carts/:cid', async (req, res) => {
   const { cid } = req.params;
 

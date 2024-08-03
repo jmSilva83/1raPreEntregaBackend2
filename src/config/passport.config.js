@@ -20,26 +20,21 @@ const initializePassportConfig = () => {
                         message: 'User already exists',
                     });
                 }
-                const parsedAge = parseInt(age, 10);
+                let parsedAge = parseInt(age, 10);
                 if (isNaN(parsedAge)) {
                     return done(null, false, { message: 'Invalid age value' });
                 }
-                try {
-                    const hashedPassword = await AuthService.hashPassword(
-                        password
-                    );
-                    const newUser = {
-                        firstName,
-                        lastName,
-                        email,
-                        age: parsedAge,
-                        password: hashedPassword,
-                    };
-                    const result = await usersService.createUser(newUser);
-                    return done(null, result);
-                } catch (error) {
-                    return done(error);
-                }
+                const authService = new AuthService();
+                const hashedPassword = await authService.hashPassword(password);
+                const newUser = {
+                    firstName,
+                    lastName,
+                    email,
+                    age: parsedAge,
+                    password: hashedPassword,
+                };
+                const result = await usersService.createUser(newUser);
+                return done(null, result);
             }
         )
     );
@@ -55,7 +50,8 @@ const initializePassportConfig = () => {
                         message: 'Incorrect credentials',
                     });
                 }
-                const isValidPassword = await AuthService.validatePassword(
+                const authService = new AuthService();
+                const isValidPassword = await authService.validatePassword(
                     password,
                     user.password
                 );
@@ -69,7 +65,6 @@ const initializePassportConfig = () => {
         )
     );
 
-
     passport.use(
         'current',
         new JWTStrategy(
@@ -78,6 +73,7 @@ const initializePassportConfig = () => {
                 jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
             },
             async (payload, done) => {
+                console.log(payload);
                 return done(null, payload);
             }
         )
