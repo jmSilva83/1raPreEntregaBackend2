@@ -1,13 +1,16 @@
 import bcrypt from 'bcrypt';
 
-export default class AuthService {
-
-    async hashPassword(password) {
+class AuthService {
+    static async hashPassword(password) {
+        if (!password) throw new Error("Password is required");
         const salts = await bcrypt.genSalt(10);
-        return bcrypt.hash(password,salts);
+        return bcrypt.hash(password, salts);
     }
 
-    async validatePassword(password,userPassword){
-        return bcrypt.compare(password,userPassword);
+    static async validatePassword(password, userPassword) {
+        if (!password || !userPassword) throw new Error("Password and user password are required");
+        return bcrypt.compare(password, userPassword);
     }
 }
+
+export default AuthService;
