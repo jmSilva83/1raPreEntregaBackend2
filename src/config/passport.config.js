@@ -20,8 +20,7 @@ const initializePassportConfig = () => {
                         message: 'User already exists',
                     });
                 }
-                let parsedAge = parseInt(age, 10);
-                if (isNaN(parsedAge)) {
+                if (isNaN(age)) {
                     return done(null, false, { message: 'Invalid age value' });
                 }
                 const authService = new AuthService();
