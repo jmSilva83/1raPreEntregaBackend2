@@ -365,6 +365,15 @@ main {
     background-color: #7e44bd;
 }
 
+.home-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+
 /* Estilos para la vista del perfil del usuario */
 .profile-container {
     min-height: 100vh;
