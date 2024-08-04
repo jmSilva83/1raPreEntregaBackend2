@@ -29,8 +29,8 @@ const initializePassportConfig = () => {
                     firstName,
                     lastName,
                     email,
-                    age: parsedAge,
-                    password: hashedPassword,
+                    age,
+                    password: hashedPassword
                 };
                 const result = await usersService.createUser(newUser);
                 return done(null, result);

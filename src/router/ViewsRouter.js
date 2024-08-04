@@ -31,7 +31,7 @@ class ViewsRouter extends BaseRouter {
 
         this.get('/logout', ['USER'], async (req, res) => {
             res.clearCookie('Wake Up Neo...');
-            res.sendSuccess('Logged out successfully');
+            res.redirect('/');
         });
     }
 }
