@@ -1,10 +1,12 @@
 {{!< main}}
 <h1>Perfil de Usuario</h1>
 
-<div class="profile-card">
-    <p><strong>Nombre:</strong> {{user.name}}</p>
-    <p><strong>Rol:</strong> {{user.role}}</p>
-    <a href="/api/sessions/logout"><button id="logoutButton">Logout</button></a>
+<div class="profile-container">
+    <div class="profile-card">
+        <p><strong>Nombre:</strong> {{user.name}}</p>
+        <p><strong>Rol:</strong> {{user.role}}</p>
+        <a href="/api/sessions/logout"><button id="logoutButton">Logout</button></a>
+    </div>
 </div>
 
 <script src="/js/profile.js"></script>

@@ -366,6 +366,14 @@ main {
 }
 
 /* Estilos para la vista del perfil del usuario */
+.profile-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
 .profile-card {
     background-color: #1f1f1f;
     padding: 20px;
@@ -374,8 +382,12 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     margin: 20px auto;
     max-width: 400px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 
 .profile-card p {
     margin: 10px 0;
